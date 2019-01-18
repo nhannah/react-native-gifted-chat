@@ -153,9 +153,6 @@ export default class MessageContainer extends React.Component {
   keyExtractor = (item) => `${item._id}`;
 
   render() {
-    if (this.props.messages.length === 0) {
-      return <View style={styles.container} />;
-    }
     return (
       <View style={styles.container}>
         {this.state.showScrollBottom && this.props.scrollToBottom ? this.renderScrollToBottomWrapper() : null}
@@ -163,6 +160,7 @@ export default class MessageContainer extends React.Component {
           ref={(ref) => (this.flatListRef = ref)}
           extraData={this.props.extraData}
           keyExtractor={this.keyExtractor}
+          ListEmptyComponent={this.props.renderListEmptyComponent}
           enableEmptySections
           automaticallyAdjustContentInsets={false}
           inverted={this.props.inverted}
@@ -221,8 +219,9 @@ MessageContainer.defaultProps = {
   messages: [],
   user: {},
   renderFooter: null,
+  renderListEmptyComponent: null,
   renderMessage: null,
-  onLoadEarlier: () => {},
+  onLoadEarlier: () => { },
   inverted: true,
   loadEarlier: false,
   listViewProps: {},
@@ -247,4 +246,5 @@ MessageContainer.propTypes = {
   scrollToBottom: PropTypes.bool,
   scrollToBottomOffset: PropTypes.number,
   scrollToBottomComponent: PropTypes.func,
+  renderListEmptyComponent: PropTypes.func,
 };
