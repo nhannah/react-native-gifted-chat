@@ -136,6 +136,8 @@ interface GiftedAvatarProps {
 export class GiftedAvatar extends React.Component<GiftedAvatarProps> { }
 
 export interface GiftedChatProps<TMessage extends IMessage = IMessage> {
+  /* Empty State */
+  renderListEmptyComponent?(props: any): React.ReactNode;
   /* Messages to display */
   messages?: TMessage[];
   /* Input text; default is undefined, but if specified, it will override GiftedChat's internal state */
