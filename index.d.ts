@@ -244,6 +244,7 @@ export interface GiftedChatProps<TMessage extends IMessage = IMessage> {
 
 export class GiftedChat extends React.Component<GiftedChatProps> {
   static defaultProps: GiftedChatProps;
+  scrollToBottom?(animated: boolean): void;
   static append<TMessage extends IMessage = IMessage>(
     currentMessages: TMessage[],
     messages: TMessage[],
@@ -282,6 +283,8 @@ export class LoadEarlier extends React.Component<LoadEarlierProps> { }
 
 interface MessageProps<TMessage extends IMessage = IMessage> {
   // TODO: this is not used
+  textProps?: RN.TextProperties;
+  customTextStyle?: TextStyle;
   renderAvatar(props: AvatarProps): React.ReactNode;
   showUserAvatar?: boolean;
   renderBubble(props: BubbleProps): React.ReactNode;
