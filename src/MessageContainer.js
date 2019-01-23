@@ -174,6 +174,7 @@ export default class MessageContainer extends React.Component {
           onScroll={this.handleOnScroll}
           scrollEventThrottle={100}
           {...this.props.listViewProps}
+          keyboardShouldPersistTaps={'handled'}
         />
       </View>
     );
