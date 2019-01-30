@@ -254,7 +254,7 @@ class GiftedChat extends React.Component {
     if (this.props.isAnimated === true) {
       Animated.timing(this.state.messagesContainerHeight, {
         toValue: newMessagesContainerHeight,
-        duration: 210,
+        duration: e && e.duration ? e.duration : 250,
       }).start();
     } else {
       this.setState({
@@ -263,7 +263,7 @@ class GiftedChat extends React.Component {
     }
   }
 
-  onKeyboardWillHide() {
+  onKeyboardWillHide(e) {
     this.setIsTypingDisabled(true);
     this.setKeyboardHeight(0);
     this.setBottomOffset(0);
@@ -271,7 +271,7 @@ class GiftedChat extends React.Component {
     if (this.props.isAnimated === true) {
       Animated.timing(this.state.messagesContainerHeight, {
         toValue: newMessagesContainerHeight,
-        duration: 210,
+        duration: e && e.duration ? e.duration - 40 : 210,
       }).start();
     } else {
       this.setState({
