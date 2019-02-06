@@ -10,6 +10,13 @@ import Color from './Color';
 import { isSameDay } from './utils';
 import { DATE_FORMAT } from './Constant';
 
+function createDateString(date) {
+  if (Platform.OS === 'android') {
+    return date + ' '
+  }
+  return date
+}
+
 export default function Day(
   { dateFormat, currentMessage, previousMessage, nextMessage, containerStyle, wrapperStyle, textStyle, inverted },
   context,
@@ -19,10 +26,10 @@ export default function Day(
       <View style={[styles.container, containerStyle]}>
         <View style={wrapperStyle}>
           <Text style={[styles.text, textStyle]}>
-            {moment(currentMessage.createdAt)
+            {createDateString(moment(currentMessage.createdAt)
               .locale(context.getLocale())
               .format(dateFormat)
-              .toUpperCase()}
+              .toUpperCase())}
           </Text>
         </View>
       </View>
@@ -42,7 +49,7 @@ const styles = StyleSheet.create({
     backgroundColor: Color.backgroundTransparent,
     color: Color.defaultColor,
     fontSize: 12,
-    fontWeight: Platform.OS === 'android' ? '400' : '600',
+    fontWeight: '600',
   },
 });
 
