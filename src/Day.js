@@ -2,7 +2,7 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import { StyleSheet, Text, View, ViewPropTypes } from 'react-native';
+import { StyleSheet, Text, View, ViewPropTypes, Platform } from 'react-native';
 import moment from 'moment';
 
 import Color from './Color';
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     backgroundColor: Color.backgroundTransparent,
     color: Color.defaultColor,
     fontSize: 12,
-    fontWeight: '600',
+    fontWeight: Platform.OS === 'android' ? '400' : '600',
   },
 });
 
